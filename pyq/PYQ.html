@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>PYQ's </title>
+  <link href="PYQ.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../loader/load.css">
+  <link rel="stylesheet" href="error.css" type="text/css" />
+  <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/674dd8e09c.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script type="text/javascript" src="../script.js"></script>
+
+  <meta name="title" content="MMMUT PYQ">
+  <meta name="description"
+    content="Discover the academic excellence of Madan Mohan Malviya University of Technology (MMMUT) and its resources, including PYQ and Notes of all semesters of B.tech BBA Bpharma MBA Mtech">
+  <meta name="keywords"
+    content="MMMUT,mmmut,Madan Mohan Malaviya University of Technology, Gorakhpur (U.P.) India,MMMUT pyq,MMMUT PYQ,Madan Mohan Malaviya University,MMMUT reso,mmmut xyz,mmmut resources,mmm,mmmut pyq,mmmut notes,mmmut btech,mmmut BBA,MBA,Bpharma,Mtech">
+  <meta name="robots" content="index , follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+  <style>
+    .page-wrapper{
+    background: black;
+    }
+    .nav-wrapper {
+      z-index: 7;
+      position: relative;
+    }
+
+    @media (max-width:400px) {
+      #load {
+        height: 121vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+    <div class="nav-wrapper">
+      <div class="grad-bar"></div>
+      <nav class="navbar">
+
+        <a href="../index.html"> <img src="../img/logo.gif" alt="MMMUT"></a>
+        <div class="menu-toggle" id="mobile-menu" onclick="f1()">
+          <span class="bar" id="bar1"></span>
+          <span class="bar" id="bar2"></span>
+          <span class="bar" id="bar3"></span>
+        </div>
+        <ul class="nav no-search" style="align-items: center;text-align: center;gap: 1rem;">
+          <li class="nav-item"><a href="../index.html">Home</a></li>
+          <li class="nav-item"><a href="../Lecture/lecture.html">Lecture  </a></li>
+          <!-- <li class="nav-item"><a href="#">Re</a></li> -->
+          <li class="nav-item"><a href="../team.html">Teams</a></li>
+          <li class="nav-item"><a href="../report.html">Contact</a></li>
+          <!-- <i class="fas fa-search" id="search-icon"></i> -->
+          <!-- <input class="search-input" type="text" placeholder="Search.."> -->
+        </ul>
+      </nav>
+    </div>
+    <section id="particles-js" class="heading">
+      <h2>MMMUT Resource Hub</h2>
+      <p> Empowering Your Academic Journey!</p>
+
+
+    </section>
+
+
+
+
+    <!-- <div class="parents"> -->
+
+
+    <!-- Select branch and semester -->
+    <form action="#" class="filter-options">
+      <select name="session" id="session">
+        <option value="-1">Select Session</option>
+        <option value="0">2021-25</option>
+        <option value="1">2022-26</option>
+        <option value="2">2023-27</option>
+      </select>
+
+      <select name="branch" id="branch">
+        <option value="-1">Select a Branch</option>
+        <option value="0">C.S.E</option>
+        <option value="1">I.T</option>
+        <option value="2">E.C.E</option>
+        <option value="3">E.E</option>
+        <option value="4">Chemical</option>
+        <option value="5">Mechanical</option>
+        <option value="6">CIVIL</option>
+      </select>
+
+      <select name="semester" id="fileSelect">
+        <option value="-1">Select a Semester</option>
+        <option value="0">I</option>
+        <option value="1">II</option>
+        <option value="2">III</option>
+        <option value="3">IV</option>
+        <option value="4">V</option>
+        <option value="5">VI</option>
+        <option value="6">VII</option>
+        <option value="7">VIII</option>
+      </select>
+
+      <select name="paper" id="selectpaper">
+        <option value="-1">Select Papers</option>
+        <option value="0">Minor 1</option>
+        <option value="1">Minor 2</option>
+        <option value="2">Major</option>
+      </select>
+    </form>
+    <!-- <button class="btn" onclick="updatePDF()">Search</button> -->
+
+    <div id="load">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="main">
+      <div id="particle">
+        <div class="content">
+          <h2 id="head">4<span><i class="fa-solid fa-ghost fa-lg" style="color: #3b404a;"></i></span>4</h2>
+          <h3>Error: 404 page not found</h3>
+          <p>Sorry, the page you're looking for cannot be accessed</p>
+        </div>
+      </div>
+    </div>
+    <div class="pdf-container">
+      <iframe id="pdfViewer" frameborder="0" scrolling="no" sandbox="allow-same-origin allow-scripts" src=""
+        onerror="displayErrorMessage()"></iframe>
+    </div>
+
+    <script src="../loader/load.js"></script>
+
+
+
+    <script>
+      async function fetchFileIDs() {
+        try {
+          const response = await fetch('https://grandmaster2004.github.io/Event_Api/Event_API.json');
+          const data = await response.json();
+    
+          // Replace the fileIDs variable with the data received from the API
+          fileIDs = data.fileIDs;
+    
+          // Call the updatePDF function to update the PDF viewer with the new data
+          updatePDF();
+        } catch (error) {
+          console.error('Error fetching file IDs:', error);
+          // displayErrorMessage();
+        }
+      }
+    
+      // Call the fetchFileIDs function when the page loads
+      window.onload = fetchFileIDs;
+    </script>
+
+
+
+
+    <script>
+    
+    var sessionSelect = document.getElementById('session');
+      var branchSelect = document.getElementById('branch');
+      var fileSelect = document.getElementById('fileSelect');
+      var selectpaper = document.getElementById('selectpaper');
+      var pdfViewer = document.getElementById('pdfViewer');
+      var ripple = document.querySelector("#load");
+      var maine = document.querySelector('.main');
+      var pdf = document.querySelector('.pdf-container');
+
+      // Function ripple
+      function displayRipple(duration) {
+        ripple.style.display = "flex";
+        setTimeout(() => {
+          ripple.style.display = "none";
+        }, duration);
+      }
+
+      function updatePDF() {
+        var selectedSession = sessionSelect.value;
+        var selectedBranch = branchSelect.value;
+        var selectedSemester = fileSelect.value;
+        var selectedPaper = selectpaper.value;
+
+        // Check if any of the selections is -1
+        if (selectedSession == -1 || selectedBranch == -1 || selectedSemester == -1 || selectedPaper == -1) {
+          // Display the "ripple" for 60 seconds (1 minute)
+          displayRipple(60000);
+          selectpaper.style.backgroundColor = "#fe0000";
+          selectpaper.style.color = "white";
+        } else {
+          selectpaper.style.backgroundColor = "#e1e1e1";
+          selectpaper.style.color = "black";
+
+          // Hide "ripple" after 4 seconds
+          setTimeout(() => {
+            ripple.style.display = "none";
+          }, 4000);
+        }
+
+        var selectedFileID = fileIDs[selectedSession][selectedBranch][selectedSemester][selectedPaper];
+
+        if (selectedFileID === 'null') {
+          // Redirect to another page (e.g., "error.html")
+          // window.location.href = 'error.html';
+          maine.style.display = "flex";
+          pdf.style.display = "none";
+        } else {
+          maine.style.display = "none";
+          pdf.style.display = "flex";
+          // Display the "ripple" for 60 seconds (1 minute)
+          displayRipple(60000);
+        }
+
+        // Update the src attribute of the iframe
+        pdfViewer.src = 'https://drive.google.com/file/d/' + selectedFileID + '/preview';
+      }
+
+      // Function to display an error message
+      function displayErrorMessage() {
+        alert('There was an error loading the PDF. Please Contact the administrator.');
+      }
+
+      sessionSelect.addEventListener('change', updatePDF);
+      branchSelect.addEventListener('change', updatePDF);
+      fileSelect.addEventListener('change', updatePDF);
+      selectpaper.addEventListener('change', updatePDF);
+
+      // Initial update when the page loads
+      updatePDF();
+    </script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAl6ZAvmADnJ-3XskAjCiya73Q2l3Yxbro",
+        authDomain: "mmmutreso.firebaseapp.com",
+        projectId: "mmmutreso",
+        storageBucket: "mmmutreso.appspot.com",
+        messagingSenderId: "3955922251",
+        appId: "1:3955922251:web:5c61fdf70a647b87d904ce",
+        measurementId: "G-CDM7273LVH"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <script src="pyq.js"></script>
+
+
+</body>
+
+</html>
